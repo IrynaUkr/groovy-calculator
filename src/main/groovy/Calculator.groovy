@@ -1,9 +1,12 @@
+import org.junit.platform.commons.logging.Logger
+import org.junit.platform.commons.logging.LoggerFactory
+
 /**
  *  Calculator
  *
  */
-
 class Calculator {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Calculator.class)
 
     static int calculate(String input) {
 
@@ -30,29 +33,31 @@ class Calculator {
                         break
                     case '-': storageNumbers.push(-currentNumber as BigInteger)
                         break
-                    case '*': storageNumbers.push ( storageNumbers.pop ( ) * currentNumber)
+                    case '*': storageNumbers.push(storageNumbers.pop() * currentNumber)
                         break
                     case '/': storageNumbers.push(storageNumbers.pop() / currentNumber as BigInteger)
                         break
                     default:
                         throw new IllegalArgumentException("Invalid number ")
                 }
-
                 operator = inputArray[i]
                 currentNumber = 0
             }
         }
-
         return addingNumbersInStorage(storageNumbers)
     }
 
     private static BigInteger addingNumbersInStorage(Stack<BigInteger> storageNumbers) {
+        LOGGER.info(() -> "method adding number was called")
         def printingResult = { param -> println("the result is : ${param}") }
         BigInteger result = 0
-        while (!storageNumbers.isEmpty())
-            result += storageNumbers.pop()
+        while (!storageNumbers.isEmpty()) {
+            def pop = storageNumbers.pop()
+            result += pop
+            LOGGER.info(() -> "the current sum is " + result)
+        }
         printingResult.call(result)
-
+        LOGGER.info(() -> "the result is " + result)
         return result
     }
 }
