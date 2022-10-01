@@ -14,7 +14,7 @@ https://www.youtube.com/watch?v=2cQfFT6ErQ4&list=PLnh8EajVFTl6X0f4RyV-qQO2H9MRZT
 
 1.1.2.2 Add Intermediate logging of math operation results.
 
-1.1.3 Now let’s imagine that customer wants changes regarding allowing large number (BigInteger support) in nearest patch. Try to pull these changes to the main branch of this task “task${number}” using git cherry-pick and git rebase commands.
+1.1.3 Now let’s imagine that customer wants changes regarding allowing large number (BigInteger support) in the nearest patch. Try to pull these changes to the main branch of this task “task${number}” using git cherry-pick and git rebase commands.
 
 1.2 Investigate changes in files in GIT repository by git blame command.
 

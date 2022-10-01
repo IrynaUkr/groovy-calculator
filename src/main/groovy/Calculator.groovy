@@ -18,7 +18,7 @@ class Calculator {
         def makeArray = stripped.&toCharArray
         def inputArray = makeArray()
 
-        Stack<Integer> storageNumbers = new Stack<>()
+        Stack<BigInteger> storageNumbers = new Stack<>()
         for (int i = 0; i < inputArray.length; i++) {
             if (Character.isDigit(inputArray[i])) {
                 currentNumber = currentNumber * 10 + (inputArray[i] - 48)
@@ -26,13 +26,13 @@ class Calculator {
 
             if (!Character.isDigit(inputArray[i]) || i == inputArray.length - 1) {
                 switch (operator) {
-                    case '+': storageNumbers.push(currentNumber)
+                    case '+': storageNumbers.push(currentNumber as BigInteger)
                         break
-                    case '-': storageNumbers.push(-currentNumber)
+                    case '-': storageNumbers.push(-currentNumber as BigInteger)
                         break
                     case '*': storageNumbers.push ( storageNumbers.pop ( ) * currentNumber)
                         break
-                    case '/': storageNumbers.push(storageNumbers.pop() / currentNumber as Integer)
+                    case '/': storageNumbers.push(storageNumbers.pop() / currentNumber as BigInteger)
                         break
                     default:
                         throw new IllegalArgumentException("Invalid number ")
@@ -46,12 +46,11 @@ class Calculator {
         return addingNumbersInStorage(storageNumbers)
     }
 
-    private static int addingNumbersInStorage(Stack<Integer> storageNumbers) {
+    private static BigInteger addingNumbersInStorage(Stack<BigInteger> storageNumbers) {
         def printingResult = { param -> println("the result is : ${param}") }
-        int result = 0
+        BigInteger result = 0
         while (!storageNumbers.isEmpty())
             result += storageNumbers.pop()
-        println(result)
         printingResult.call(result)
 
         return result
